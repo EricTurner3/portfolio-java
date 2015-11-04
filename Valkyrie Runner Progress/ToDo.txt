@@ -1,0 +1,39 @@
+Create Low Health Player Animation  -- Done on Jan 16
+Add Array full of Special Gems /Coins -- Done on Jan 16
+Add Array full of Obstacles -- Done on Jan 19
+Add Array full of Platforms
+Add Array full of Enemies -- Done on Jan 20
+Add mini-Boss/ full boss
+Add levels -- Done on Jan 19
+Add World selection screen?
+REDUCE FILE SIZE
+Use mp3s instead of wavs?
+Create a different type of Enemy?
+Create Enemies class -- Done on Jan 16
+Create more environmental hazards. 
+Refine jumping technique to JUMP not FLY
+Add different powerups? Maybe fly or fire?
+Add weapons melee/long range
+Add fighting technique?
+Create fighting animation?
+	Mana/Stamina bars?
+Health bars over character/ enemies
+Ability to destroy obstacles with weapon perhaps?
+Leveling System/XP
+Store/Shop
+Maybe NPC's??
+Ability to change color of player character to other presets
+Android Port?
+Web Port?
+Difficulty levels?
+Sprinting or crouching ability
+Design platforms/ground
+Make player able to fall out of map and die/ lose life
+	- Add life system, so many coins = new life or special powerup for new life
+Create "Go!" Arrow for advancing --Done on Jan 19
+Make Special Ability have more benefits
+Add heart to increase health instead of just special
+Add Down Key to fall through platform
+Set Enemy size width and height to variables, if hit or killed, make the spin (Jump) animation
+	occur and then scale size down to nothing. (similar to smash bros flying into background)
+Use Sprite Sheets

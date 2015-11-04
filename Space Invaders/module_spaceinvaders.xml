@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_spaceinvaders" default="compile.module.spaceinvaders">
+  <dirname property="module.spaceinvaders.basedir" file="${ant.file.module_spaceinvaders}"/>
+  
+  <property name="module.jdk.home.spaceinvaders" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.spaceinvaders" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.spaceinvaders" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.spaceinvaders" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="spaceinvaders.output.dir" value="${module.spaceinvaders.basedir}/out/production/SpaceInvaders"/>
+  <property name="spaceinvaders.testoutput.dir" value="${module.spaceinvaders.basedir}/out/test/SpaceInvaders"/>
+  
+  <path id="spaceinvaders.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="spaceinvaders.module.production.classpath">
+    <path refid="${module.jdk.classpath.spaceinvaders}"/>
+  </path>
+  
+  <path id="spaceinvaders.runtime.production.module.classpath">
+    <pathelement location="${spaceinvaders.output.dir}"/>
+  </path>
+  
+  <path id="spaceinvaders.module.classpath">
+    <path refid="${module.jdk.classpath.spaceinvaders}"/>
+    <pathelement location="${spaceinvaders.output.dir}"/>
+  </path>
+  
+  <path id="spaceinvaders.runtime.module.classpath">
+    <pathelement location="${spaceinvaders.testoutput.dir}"/>
+    <pathelement location="${spaceinvaders.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.spaceinvaders">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.spaceinvaders">
+    <patternset refid="excluded.from.module.spaceinvaders"/>
+  </patternset>
+  
+  <path id="spaceinvaders.module.sourcepath">
+    <dirset dir="${module.spaceinvaders.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.spaceinvaders" depends="compile.module.spaceinvaders.production,compile.module.spaceinvaders.tests" description="Compile module SpaceInvaders"/>
+  
+  <target name="compile.module.spaceinvaders.production" depends="register.custom.compilers" description="Compile module SpaceInvaders; production classes">
+    <mkdir dir="${spaceinvaders.output.dir}"/>
+    <javac2 destdir="${spaceinvaders.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.spaceinvaders}/javac">
+      <compilerarg line="${compiler.args.spaceinvaders}"/>
+      <bootclasspath refid="spaceinvaders.module.bootclasspath"/>
+      <classpath refid="spaceinvaders.module.production.classpath"/>
+      <src refid="spaceinvaders.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.spaceinvaders"/>
+    </javac2>
+    
+    <copy todir="${spaceinvaders.output.dir}">
+      <fileset dir="${module.spaceinvaders.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.spaceinvaders.tests" depends="register.custom.compilers,compile.module.spaceinvaders.production" description="compile module SpaceInvaders; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.spaceinvaders" description="cleanup module">
+    <delete dir="${spaceinvaders.output.dir}"/>
+    <delete dir="${spaceinvaders.testoutput.dir}"/>
+  </target>
+</project>
